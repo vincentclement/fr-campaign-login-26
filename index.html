@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body { margin: 0; padding: 0; overflow: hidden; text-align: center; background: transparent; }
+    img { max-width: 100%; height: auto; display: block; margin: 0 auto; }
+  </style>
+</head>
+<body>
+  <img id="banner" src="" alt="Campagne de fin d'année" />
+
+  <script>
+    const baseUrl = "https://doctolib-b2b-wordpress-assets-prd-aws-de-fra-1.s3.amazonaws.com/uploads/2026/11/";
+    const fallback = baseUrl + "2026-11-13.jpg";
+    const today = new Date().toLocaleDateString("en-CA", { timeZone: "Europe/Paris" });
+    const img = document.getElementById("banner");
+
+    img.onerror = () => { img.onerror = null; img.src = fallback; };
+    img.src = today.startsWith("2026-11-") ? baseUrl + today + ".jpg" : fallback;
+  </script>
+</body>
+</html>
